@@ -1,6 +1,8 @@
 package Controlador;
 
 import Vista.LoginView;
+import Vista.MenuPrincipal;
+
 import dao.UsuarioDAO;
 import conexión.ConexionBD;
 
@@ -60,7 +62,7 @@ public class ControlRegistro implements ActionListener {
         boolean exito = usuarioDAO.registrarUsuario(nombre, correo, clave1, tipo);
 
         if (exito) {
-            JOptionPane.showMessageDialog(vista, "Usuario registrado correctamente.");
+            JOptionPane.showMessageDialog(vista, "Usuario registrado  correctamente.");
             vista.mostrarLogin(); // método personalizado para cambiar de formulario
         } else {
             JOptionPane.showMessageDialog(vista, "Error al registrar usuario.");
@@ -71,7 +73,7 @@ public class ControlRegistro implements ActionListener {
         String correo = vista.txtUsuario.getText();
         String clave = new String(vista.txtPassword.getPassword());
 
-        // Aquí iría la validación real
+        // validación real
         if (correo.isEmpty() || clave.isEmpty()) {
             JOptionPane.showMessageDialog(vista, "Por favor completa todos los campos.");
             return;
@@ -81,6 +83,7 @@ public class ControlRegistro implements ActionListener {
 
         if (exito) {
             JOptionPane.showMessageDialog(vista, "Usuario logeado correctamente.");
+            abrirMenu();
         } else {
             JOptionPane.showMessageDialog(vista, "Error al logear usuario.");
         }
@@ -101,4 +104,12 @@ public class ControlRegistro implements ActionListener {
             JOptionPane.showMessageDialog(vista, "Error al encontrar email.");
         }
     }
+    
+    private void abrirMenu(){
+        MenuPrincipal menu = new MenuPrincipal();
+        new ControlMenu(menu);
+        menu.setVisible(true);
+        vista.dispose(); // Cierra el login
+    };
+    
 }

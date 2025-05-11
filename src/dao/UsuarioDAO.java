@@ -31,33 +31,21 @@ public class UsuarioDAO {
     }
 
     // Validación de inicio de sesión
-    public UsuarioBase obtenerUsuario(String correo, String contrasena) {
-    String sql = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
+     public boolean validarLogin(String correo, String contrasena) {
+        String sql = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
 
-    try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
-        stmt.setString(1, correo);
-        stmt.setString(2, contrasena);
-        ResultSet rs = stmt.executeQuery();
+        try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
+            stmt.setString(1, correo);
+            stmt.setString(2, contrasena);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next(); 
 
-        if (rs.next()) {
-            int id = rs.getInt("id");
-            String nombre = rs.getString("nombre");
-            String tipo = rs.getString("tipo");
-            String contraseña = rs.getString("contrasena");
-
-            if (tipo.equals("admin")) {
-                return new Admin(id, nombre, correo, contraseña);
-            } else {
-                return new UsuarioComun(id, nombre, correo, contraseña);
-            }
+        } catch (SQLException e) {
+            System.out.println("❌ Error al validar login: " + e.getMessage());
+            return false;
         }
-
-    } catch (SQLException e) {
-        System.err.println("❌ Error al obtener el usuario: " + e.getMessage());
     }
 
-    return null;
-}
     
     //Recuperacion de cuenta
     

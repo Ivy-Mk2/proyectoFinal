@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/Controlador/ControlMenu.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/Controlador/ControlRegistro.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/Vista/MenuPrincipal.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/dao/ReservaDAO.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/Vista/PanelReservar.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/Launcher.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/Modelo/UsuariosBase.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/Modelo/UsuarioComun.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/dao/UsuarioDAO.java</file>
-            <file>file:/C:/Users/ocasp/OneDrive/Documentos/NetBeansProjects/Proyecto_Final/src/Modelo/Admin.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
