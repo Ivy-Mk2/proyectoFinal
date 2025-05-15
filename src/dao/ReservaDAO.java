@@ -17,14 +17,16 @@ public class ReservaDAO {
     public ReservaDAO(Connection conexion ) {
         this.conexion = conexion;
     }
-    public boolean RegistroReserva(int idMesa, String fecha, String hora, String ubicacion){
-  String sql = "INSERT INTO reservas (id_mesa, fecha, hora, ubicacion) VALUES (?, ?, ?, ?)";
+    public boolean RegistroReserva(int idUsuario,int idMesa, String fecha, String hora,String estado, String ubicacion){
+    String sql = "INSERT INTO reservas (id_usuario , id_mesa, fecha, hora, estado, ubicacion) VALUES (?, ?, ?, ?, ?,?)";
 
         try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
-            stmt.setInt(1, idMesa);
-            stmt.setString(2, fecha);
-            stmt.setString(3, hora);
-            stmt.setString(4, ubicacion);
+            stmt.setInt(1, idUsuario);
+            stmt.setInt(2, idMesa);
+            stmt.setString(3, fecha);
+            stmt.setString(4, hora);
+            stmt.setString(5, estado);
+            stmt.setString(6, ubicacion);
 
             int filasInsertadas = stmt.executeUpdate();
             return filasInsertadas > 0;

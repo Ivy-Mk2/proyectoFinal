@@ -1,9 +1,13 @@
 package dao;
 
+import Modelo.Admin;
+import Modelo.UsuariosBase;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import modelo.UsuarioComun;
 
 public class UsuarioDAO {
 
@@ -60,5 +64,35 @@ public class UsuarioDAO {
             System.out.println("Error al encontrar correo:" + e.getMessage());
             return false;
         }
+    }
+    public UsuariosBase obtenerUsuarioPorCorreo(String correo) {
+        UsuariosBase usuario = null;
+        String sql = "SELECT * FROM usuarios WHERE correo = ?";
+
+        try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
+            stmt.setString(1, correo);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+            int id = rs.getInt("id");
+            String nombre = rs.getString("nombre");
+            String correoBD = rs.getString("correo");
+            String contrasena = rs.getString("contrasena");
+            String tipo = rs.getString("tipo");
+
+            if (tipo.equalsIgnoreCase("admin")) {
+                usuario = new Admin(id,nombre, correoBD, contrasena);
+            } else {
+                usuario = new UsuarioComun(id,nombre, correoBD, contrasena);
+            }
+
+            usuario.setId(id);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return usuario;
     }
 }

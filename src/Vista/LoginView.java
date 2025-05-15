@@ -57,7 +57,7 @@ import utils.Placeholder;
         txtUsuario = new JTextField();
         txtUsuario.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         txtUsuario.setFont(new Font("Segoe UI", Font.BOLD, 15));
-        Placeholder.aplicar(txtUsuario, "Usuario");
+        Placeholder.aplicar(txtUsuario, "Correo");
         txtUsuario.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         txtPassword = new JPasswordField();
@@ -157,7 +157,7 @@ import utils.Placeholder;
         txtNuevoPassword.setFont(new Font("Segoe UI", Font.BOLD, 15));
         Placeholder.aplicar(txtNuevoPassword, "Contraseña");
         txtNuevoPassword.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        
+         
         txtConfirmarPassword = new JPasswordField();
         txtConfirmarPassword.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         txtConfirmarPassword.setFont(new Font("Segoe UI", Font.BOLD, 15));

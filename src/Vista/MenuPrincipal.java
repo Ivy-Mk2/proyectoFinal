@@ -13,9 +13,12 @@ import vista.PanelInicio;
 import vista.PanelPerfil;
 import vista.PanelReservar;
 import vista.PanelTurno;
+import Vista.GestorMesas;
 
 import Controlador.ControlMenu;
 import conexión.ConexionBD;
+
+import sesion.SesionUsuario;
 
 
 /**
@@ -27,9 +30,18 @@ public class MenuPrincipal extends JFrame {
     CardLayout cardLayout;
     JPanel panelContenido;
     public PanelReservar panelReservar;
+    public PanelInicio panelInicio;
+    public PanelPerfil panelPerfil;
+    public GestorMesas gestorMesas;
+            
 
     public MenuPrincipal() {
         panelReservar = new PanelReservar();
+        panelInicio = new PanelInicio(SesionUsuario.getUsuarioActual().getNombre());
+        panelPerfil = new PanelPerfil();
+        gestorMesas = new GestorMesas();
+        
+        
         setTitle("Panel principal - Turnify");
         setSize(900, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,10 +57,17 @@ public class MenuPrincipal extends JFrame {
         JButton btnInicio = new JButton("Inicio");
         JButton btnReservar = new JButton("Reservar turno");
         JButton btnMisTurnos = new JButton("Mis turnos");
+        JButton btnGestorMesas = new JButton("Gestor de mesas");
         JButton btnPerfil = new JButton("Perfil de usuario");
         JButton btnSoporte = new JButton("Soporte");
 
-        JButton[] botones = { btnInicio, btnReservar, btnMisTurnos, btnPerfil, btnSoporte };
+        JButton[] botones;
+
+        if (SesionUsuario.getUsuarioActual().getTipo().equalsIgnoreCase("Admin")) {
+            botones = new JButton[] { btnInicio, btnReservar, btnMisTurnos, btnGestorMesas, btnPerfil, btnSoporte };
+        } else {
+            botones = new JButton[] { btnInicio, btnReservar, btnMisTurnos, btnPerfil, btnSoporte };
+        }
         for (JButton btn : botones) {
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
             btn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
@@ -62,10 +81,14 @@ public class MenuPrincipal extends JFrame {
         panelContenido = new JPanel(cardLayout);
         
         // Vistas segun seleccion 
-        panelContenido.add(new PanelInicio("Ivy"), "inicio");//Mensaje de bienvenida segun ususario
+        panelContenido.add( panelInicio, "inicio");//Mensaje de bienvenida segun ususario
         panelContenido.add (panelReservar,"reservar");
         panelContenido.add(new PanelTurno(),"turnos");
-        panelContenido.add(new PanelPerfil(),"perfil");
+        panelContenido.add(panelPerfil,"perfil");
+        if(SesionUsuario.getUsuarioActual().getTipo().equalsIgnoreCase("Admin")){
+        panelContenido.add(gestorMesas,"mesas");
+            
+        }
         panelContenido.add(crearPanel("Soporte"), "soporte");
 
         // Añadir al frame
@@ -77,6 +100,7 @@ public class MenuPrincipal extends JFrame {
         btnReservar.addActionListener(e -> cardLayout.show(panelContenido, "reservar"));
         btnMisTurnos.addActionListener(e -> cardLayout.show(panelContenido, "turnos"));
         btnPerfil.addActionListener(e -> cardLayout.show(panelContenido, "perfil"));
+        btnGestorMesas.addActionListener(e -> cardLayout.show(panelContenido, "mesas"));
         btnSoporte.addActionListener(e -> cardLayout.show(panelContenido, "soporte"));
     }
 

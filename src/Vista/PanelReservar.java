@@ -17,7 +17,7 @@ public class PanelReservar extends JPanel {
     public JComboBox<String> comboMesas;
     public JTextField txtFecha;
     public JTextField txtHora;
-    public JComboBox<String> comboUbicacion;
+    public JComboBox<String> comboUbicacion,comboEstado;
     public JButton btnReservar;
 
 
@@ -51,7 +51,10 @@ public class PanelReservar extends JPanel {
 
         comboUbicacion = new JComboBox<>(new String[] { "Interior", "Terraza" });
         comboUbicacion.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-
+        
+        comboEstado = new JComboBox<>(new String[] {"Confirmada", "Cancelada", "ReAgendada" });
+        comboEstado.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        
         btnReservar = new JButton("Reservar");
         btnReservar.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnReservar.setBackground(Color.decode("#FCFC62"));
@@ -61,6 +64,7 @@ public class PanelReservar extends JPanel {
         formPanel.add(estilizar("Fecha", txtFecha));
         formPanel.add(estilizar("Hora", txtHora));
         formPanel.add(estilizar("Ubicación", comboUbicacion));
+        formPanel.add("Estado",comboEstado);
         formPanel.add(btnReservar);
 
         add(formPanel, BorderLayout.CENTER);

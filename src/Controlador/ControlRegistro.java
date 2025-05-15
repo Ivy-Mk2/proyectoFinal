@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.UsuariosBase;
 import Vista.LoginView;
 import Vista.MenuPrincipal;
 
@@ -9,6 +10,7 @@ import conexión.ConexionBD;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import sesion.SesionUsuario;
 
 public class ControlRegistro implements ActionListener {
 
@@ -38,7 +40,7 @@ public class ControlRegistro implements ActionListener {
             iniciarSesion();
         }
         if (source==vista.btnRecuperar){
-            recuerarCuenta();
+            recuperarCuenta();
         }
     }
 
@@ -82,14 +84,19 @@ public class ControlRegistro implements ActionListener {
         boolean exito = usuarioDAO.validarLogin(correo, clave);
 
         if (exito) {
-            JOptionPane.showMessageDialog(vista, "Usuario logeado correctamente.");
+            JOptionPane.showMessageDialog(vista, "Usuario logeado correctamente.");            
+            UsuariosBase usuario = usuarioDAO.obtenerUsuarioPorCorreo(correo);
+            SesionUsuario.iniciarSesion(usuario);
             abrirMenu();
+
+            
+        
         } else {
             JOptionPane.showMessageDialog(vista, "Error al logear usuario.");
         }
     }
     
-    private void recuerarCuenta(){
+    private void recuperarCuenta(){
         String correo = vista.txtResCorreo.getText();
         
         if (correo.isEmpty() ) {
