@@ -35,7 +35,8 @@ public class UsuarioDAO {
     }
 
     // Validación de inicio de sesión
-     public boolean validarLogin(String correo, String contrasena) {
+     
+    public boolean validarLogin(String correo, String contrasena) {
         String sql = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
 
         try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
@@ -65,6 +66,9 @@ public class UsuarioDAO {
             return false;
         }
     }
+    
+    //Almcaenamientos de usario
+    
     public UsuariosBase obtenerUsuarioPorCorreo(String correo) {
         UsuariosBase usuario = null;
         String sql = "SELECT * FROM usuarios WHERE correo = ?";

@@ -7,16 +7,47 @@ public class Reservas {
     private String fecha;      // Formato sugerido: "2024-05-10"
     private String hora;       // Formato sugerido: "10:30 AM"
     private String estado;     // Ej: "Confirmada", "Cancelada", "Reagendada"
+    private String comentario;
+    private String ubicacion;
 
     public Reservas() {
     }
-
-    public Reservas(int idUsuario, int idMesa, String fecha, String hora, String estado) {
+ 
+    public Reservas(int id, int idUsuario, int idMesa, String fecha, String hora, String estado,String ubicacion,String comentario) {
+        this.id=id;
         this.idUsuario = idUsuario;
         this.idMesa = idMesa;
         this.fecha = fecha;
         this.hora = hora;
         this.estado = estado;
+        this.ubicacion=ubicacion;
+        this.comentario=comentario;
+    }
+    
+    public Reservas(int idUsuario, int idMesa, String fecha, String hora, String estado,String ubicacion,String comentario) {
+        this.idUsuario = idUsuario;
+        this.idMesa = idMesa;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.estado = estado;
+        this.ubicacion=ubicacion;
+        this.comentario=comentario;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     // Getters

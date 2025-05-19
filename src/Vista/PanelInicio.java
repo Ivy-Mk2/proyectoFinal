@@ -66,7 +66,7 @@ public class PanelInicio extends JPanel {
         return panel;
     }
 
-    private JButton crearBotonAccion(String icono, String texto) {
+        private JButton crearBotonAccion(String icono, String texto) {
         JButton btn = new JButton(icono + "  " + texto);
         btn.setFocusPainted(false);
         btn.setFont(new Font("Segoe UI", Font.PLAIN, 14));

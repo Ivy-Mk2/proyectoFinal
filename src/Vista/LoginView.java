@@ -48,9 +48,12 @@ import utils.Placeholder;
         formLogin.setBackground(Color.decode("#A3A3A3"));
         formLogin.setLayout(new BoxLayout(formLogin, BoxLayout.Y_AXIS));
         formLogin.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
+        
 
         JLabel lblTitulo = new JLabel("Turnify");
         lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTitulo.setMaximumSize(new Dimension(Integer.MAX_VALUE, lblTitulo.getPreferredSize().height));
         
         lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -81,13 +84,16 @@ import utils.Placeholder;
         btnLogin.setForeground(Color.WHITE);
         btnLogin.setFocusPainted(false);
         btnLogin.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
+        btnLogin.setAlignmentX(Component.CENTER_ALIGNMENT); // <-- clave
+
 
         btnRegistro = new JButton("Registrarte");
         btnRegistro.setBackground(Color.decode("#FCFC62"));
         btnRegistro.setForeground(Color.decode("#424242"));
         btnRegistro.setFocusPainted(false);
         btnRegistro.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
-
+        btnRegistro.setAlignmentX(Component.CENTER_ALIGNMENT); // <-- clave
+        
         // Agregar al formulario de login
         formLogin.add(lblTitulo);
         formLogin.add(Box.createVerticalStrut(20));
@@ -145,6 +151,8 @@ import utils.Placeholder;
         JLabel lblRegisterTitle = new JLabel("Crear cuenta");
         lblRegisterTitle.setFont(new Font("Segoe UI", Font.BOLD, 22));
         lblRegisterTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lblRegisterTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        lblRegisterTitle.setMaximumSize(new Dimension(Integer.MAX_VALUE, lblTitulo.getPreferredSize().height));
 
         txtNuevoUsuario = new JTextField();
         txtNuevoUsuario.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
@@ -170,7 +178,7 @@ import utils.Placeholder;
         Placeholder.aplicar(txtNuevoCorreo, "Correo");
         txtNuevoCorreo.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         
-        comboTipo = new JComboBox<>(new String[] { "Admin", "Usuario"});
+        comboTipo = new JComboBox<>(new String[] { "Admin", "Cliente"});
         comboTipo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         comboTipo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         comboTipo.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -181,11 +189,14 @@ import utils.Placeholder;
         btnCrearCuenta.setForeground(Color.WHITE);
         btnCrearCuenta.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         btnCrearCuenta.setFocusPainted(false);
+        btnCrearCuenta.setAlignmentX(Component.CENTER_ALIGNMENT); // <-- clave
+
 
         JButton btnVolverLogin = new JButton("¿Ya tienes cuenta? Iniciar sesión");
         btnVolverLogin.setBackground(Color.decode("#FCFC62"));
         btnVolverLogin.setForeground(Color.decode("#424242"));
         btnVolverLogin.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
+        btnVolverLogin.setAlignmentX(Component.CENTER_ALIGNMENT); // 
         btnVolverLogin.setFocusPainted(false);
 
         // Agregar al formulario
@@ -218,7 +229,6 @@ import utils.Placeholder;
         cardLayout.show(panelContenedor, "login");
 
         // Agregar los dos paneles principales al JFrame
-        add(panelLogo, BorderLayout.WEST);
         add(panelContenedor, BorderLayout.CENTER);
 
         // ---------------- Eventos ----------------

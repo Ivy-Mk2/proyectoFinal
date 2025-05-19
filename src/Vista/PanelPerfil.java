@@ -12,7 +12,7 @@ public class PanelPerfil extends JPanel {
         setBackground(Color.decode("#F7F7F7"));
 
         // ---------- TÍTULO ----------
-        JLabel lblTitulo = new JLabel("¡Bienvenido, "+sesion.SesionUsuario.getUsuarioActual().getNombre(), SwingConstants.CENTER);
+        JLabel lblTitulo = new JLabel("¡Bienvenido, " + sesion.SesionUsuario.getUsuarioActual().getNombre() + "!", SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 26));
         lblTitulo.setBorder(BorderFactory.createEmptyBorder(30, 0, 20, 0));
         add(lblTitulo, BorderLayout.NORTH);
@@ -23,13 +23,13 @@ public class PanelPerfil extends JPanel {
         panelInfo.setBackground(getBackground());
         panelInfo.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 50));
 
-        panelInfo.add(crearDato("Correo", sesion.SesionUsuario.getUsuarioActual().getCorreo(), "✉️"));
+        panelInfo.add(crearDato("Correo", sesion.SesionUsuario.getUsuarioActual().getCorreo()));
         panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(crearDato("Contraseña", sesion.SesionUsuario.getUsuarioActual().getContraseña(), "🛡"));
+        panelInfo.add(crearDato("Contraseña", "********"));
         panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(crearDato("Nombre completo", sesion.SesionUsuario.getUsuarioActual().getNombre(), "👤"));
+        panelInfo.add(crearDato("Nombre completo", sesion.SesionUsuario.getUsuarioActual().getNombre()));
         panelInfo.add(Box.createVerticalStrut(10));
-        panelInfo.add(crearDato("Tipo de usuario", sesion.SesionUsuario.getUsuarioActual().getTipo(), "✅"));
+        panelInfo.add(crearDato("Tipo de usuario", sesion.SesionUsuario.getUsuarioActual().getTipo()));
 
         add(panelInfo, BorderLayout.CENTER);
 
@@ -51,10 +51,11 @@ public class PanelPerfil extends JPanel {
         add(panelBoton, BorderLayout.SOUTH);
     }
 
-    public JButton getbtCerrarSesion(){
+    public JButton getbtCerrarSesion() {
         return btnCerrarSesion;
     }
-    private JPanel crearDato(String titulo, String valor, String icono) {
+
+    private JPanel crearDato(String titulo, String valor) {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.WHITE);
         panel.setBorder(BorderFactory.createCompoundBorder(
@@ -62,7 +63,7 @@ public class PanelPerfil extends JPanel {
                 BorderFactory.createEmptyBorder(15, 20, 15, 20)
         ));
 
-        JLabel lblTitulo = new JLabel(icono + "  " + titulo);
+        JLabel lblTitulo = new JLabel(titulo);
         lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 14));
 
         JLabel lblValor = new JLabel(valor);

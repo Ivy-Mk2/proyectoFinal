@@ -26,7 +26,6 @@ public class ControlMenu implements  ActionListener{
     public ControlMenu(MenuPrincipal vista) {
         this.vista=vista;
         this.reservaDAO = new ReservaDAO(ConexionBD.getConexion());
-        vista.panelReservar.btnReservar.addActionListener(this); 
         vista.panelPerfil.btnCerrarSesion.addActionListener(this);
         
 
@@ -35,34 +34,11 @@ public class ControlMenu implements  ActionListener{
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         
-    if (source == vista.panelReservar.btnReservar) {
-        registrarReserva();
-    }else if(source == vista.panelPerfil.btnCerrarSesion){
-        cerrarSesion(); 
-        
+    if (source == vista.panelPerfil.btnCerrarSesion) {
+        cerrarSesion();
     }
     }
-    private void registrarReserva() {
-        try {
-            int idUsuario = SesionUsuario.getUsuarioActual().getId();
-            int idMesa = Integer.parseInt(vista.panelReservar.comboMesas.getSelectedItem().toString());
-            String fecha = vista.panelReservar.txtFecha.getText();
-            String hora = vista.panelReservar.txtHora.getText();
-            String estado = vista.panelReservar.comboEstado.getSelectedItem().toString();
-            String ubicacion = vista.panelReservar.comboUbicacion.getSelectedItem().toString();
-
-            boolean resultado = reservaDAO.RegistroReserva( idUsuario, idMesa,  fecha,  hora, estado,  ubicacion);
-
-            if (resultado) {
-                JOptionPane.showMessageDialog(vista, "✅ Reserva registrada correctamente.");
-            } else {
-                JOptionPane.showMessageDialog(vista, "❌ Error al registrar la reserva.");
-            }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(vista, "⚠️ Por favor, selecciona una mesa válida.");
-        }
-    }
+  
     private void cerrarSesion(){
    
             SesionUsuario.cerrarSesion(); // 1. Limpiar sesión

@@ -11,18 +11,25 @@ package Modelo;
 public class Mesas {
     private int id;
     private String numero;
-    private int capacida ;
+    private int capacidad;
     private String ubicacion;
-    private String estado; 
-    
-    public Mesas(){
-        
+    private String estado;
+
+    // Constructor para inserción (sin ID)
+    public Mesas(String numero, int capacidad, String ubicacion, String estado) {
+        this.numero = numero;
+        this.capacidad = capacidad;
+        this.ubicacion = ubicacion;
+        this.estado = estado;
     }
-    public Mesas(String numero,int capacida,String ubicacion,String estado){
-        this.numero=numero;
-        this.capacida=capacida;
-        this.ubicacion=ubicacion;
-        this.estado=estado;
+
+    // Constructor completo (con ID)
+    public Mesas(int id, String numero, int capacidad, String ubicacion, String estado) {
+        this.id = id;
+        this.numero = numero;
+        this.capacidad = capacidad;
+        this.ubicacion = ubicacion;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -41,12 +48,12 @@ public class Mesas {
         this.numero = numero;
     }
 
-    public int getCapacida() {
-        return capacida;
+    public int getCapacidad() {
+        return capacidad;
     }
 
-    public void setCapacida(int capacida) {
-        this.capacida = capacida;
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 
     public String getUbicacion() {
@@ -64,5 +71,5 @@ public class Mesas {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+
 }
